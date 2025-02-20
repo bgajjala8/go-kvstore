@@ -6,7 +6,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/bgajjala8/go-cache/internal/service"
+	service "github.com/bgajjala8/go-cache/pkg/service/cache-api"
 	pb "github.com/bgajjala8/go-cache/proto-public/go"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"

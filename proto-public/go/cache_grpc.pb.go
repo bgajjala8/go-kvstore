@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             (unknown)
-// source: proto-public/kv.proto
+// source: proto-public/cache.proto
 
 package go_cache
 
@@ -193,5 +193,5 @@ var CacheService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto-public/kv.proto",
+	Metadata: "proto-public/cache.proto",
 }
