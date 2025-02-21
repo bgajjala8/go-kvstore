@@ -16,6 +16,7 @@ func (c *Node) Create() *Node {
 	return c
 }
 
+
 // Destroy sets cache block to nil
 func (c *Node) Destroy() {
 	c.data = nil //allows garbage collector to clean up memory
