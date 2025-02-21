@@ -1,0 +1,22 @@
+version: v1
+plugins:
+  - name: go
+    out: proto-public/go
+    opt:
+      - paths=import
+      - module=github.com/bgajjala8/go-cache
+  - name: go-grpc
+    out: proto-public/go
+    opt:
+      - paths=import
+      - module=github.com/bgajjala8/go-cache
+  - name: grpc-gateway
+    out: proto-public/go
+    opt:
+      - paths=import
+      - module=github.com/bgajjala8/go-cache
+  - name: go-json
+    out: proto-public/go
+    opt:
+      - paths=import
+      - module=github.com/bgajjala8/go-cache
