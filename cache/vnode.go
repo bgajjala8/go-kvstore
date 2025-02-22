@@ -11,7 +11,6 @@ type Vnode struct {
 // Create allocates memory for map initialization.
 func (v *Vnode) Create() *Vnode {
 	v.data = make(map[string]string)
-	fmt.Println("Cache created")
 	return v
 }
 
