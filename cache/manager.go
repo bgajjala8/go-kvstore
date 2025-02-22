@@ -3,13 +3,14 @@ package cache
 import "fmt"
 
 // Manager TODO: CACHE SHARDING?
+// This will manage cache in terms of deleting and creating nodes and all api calls
 type Manager struct {
-	pool map[string]*Node
+	pool map[string]*Vnode
 }
 
 func NewManager() *Manager {
 	return &Manager{
-		pool: make(map[string]*Node),
+		pool: make(map[string]*Vnode),
 	}
 }
 
@@ -19,8 +20,8 @@ func (m *Manager) CacheCreate(name string) string {
 		return name
 	}
 
-	node := (&Node{}).Create()
-	m.pool[name] = node
+	vnode := (&Vnode{}).Create()
+	m.pool[name] = vnode
 	return name
 }
 
