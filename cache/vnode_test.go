@@ -35,7 +35,7 @@ func TestVnode_Get(t *testing.T) {
 	v.data["foo"] = "bar"
 	value, error := v.Get("foo")
 
-	assert.Nil(t, error, "Get foo should not return an error")
+	assert.Nil(t, error, "Get 'foo' should not return an error")
 	assert.Equal(t, "bar", value, "Set keys don't match keys in map")
 }
 
@@ -47,6 +47,6 @@ func TestVnode_Delete(t *testing.T) {
 
 	value, exists := v.data["foo"]
 
-	assert.Equal(t,"", value, "Value for key foo should be nil")
+	assert.Equal(t,"", value, "Value for key 'foo' should be nil")
 	assert.True(t, !exists, "Key 'foo' should not exist in the cache")
 }
