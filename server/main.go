@@ -14,14 +14,14 @@ import (
 )
 
 const (
-	addr     = "localhost:50051"
+	grpcAddr = "localhost:50051"
 	httpAddr = "localhost:8080"
 )
 
 func main() {
 	// Start gRPC server in a separate goroutine
 	go func() {
-		lis, err := net.Listen("tcp", addr)
+		lis, err := net.Listen("tcp", grpcAddr)
 		if err != nil {
 			log.Fatalf("Failed to listen: %v\n", err)
 		}
@@ -39,7 +39,7 @@ func main() {
 	// Create a new gRPC Gateway mux for the HTTP server on main goroutine
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-	err := pb.RegisterCacheServiceHandlerFromEndpoint(context.Background(), mux, addr, opts)
+	err := pb.RegisterCacheServiceHandlerFromEndpoint(context.Background(), mux, grpcAddr, opts)
 	if err != nil {
 		log.Fatalf("Failed to start HTTP gateway: %v", err)
 	}
