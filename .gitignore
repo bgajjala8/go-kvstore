@@ -23,3 +23,6 @@ obj/
 
 # Go vendor directory
 vendor/
+
+# Generated protoset files
+api.bin

@@ -3,10 +3,27 @@ package service
 import (
 	"context"
 
+	setcmd "github.com/bgajjala8/go-cache/pkg/set"
 	pb "github.com/bgajjala8/go-cache/proto-public/go"
+	validation "github.com/go-ozzo/ozzo-validation"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
-// TODO: Implement the Set method of the Service
-func (s *Service) Set(context.Context, *pb.SetRequest) (*pb.SetResponse, error) {
-	return nil, nil
+func validateSetRequest(req *pb.SetRequest) error {
+	return validation.ValidateStruct(req,
+		validation.Field(&req.Key, validation.Required),
+		validation.Field(&req.Value, validation.Required),
+	)
+}
+
+func (s *Service) Set(ctx context.Context, req *pb.SetRequest) (*pb.SetResponse, error) {
+	err := validateSetRequest(req)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "validation error: %s", err.Error())
+	}
+
+	resp := setcmd.Set(s.cache, req.GetKey(), req.GetValue())
+
+	return &pb.SetResponse{Key: req.GetKey(), Value: resp}, nil
 }
