@@ -1,6 +1,5 @@
-# kvstore
-
-Basic KV store in GO
+# go-cache
+In memory cache server implemented with virtual nodes and consistent hashing (TBD which approach)
 
 ## Quick Startup
 
